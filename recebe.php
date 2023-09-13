@@ -1,10 +1,5 @@
 <?
-	print_r($_FILES);
-	print_r($_POST);
 	$base64string = $_POST['img64'];
-
-
-
 	$data = $base64string;
 	
 	list($type, $data) = explode(';', $data);
