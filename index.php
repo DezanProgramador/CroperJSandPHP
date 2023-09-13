@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6/dist/css/bootstrap.min.css" crossorigin="anonymous">
-    <link href="node_modules/cropperjs/dist/cropper.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link href="node_modules/cropperjs/dist/cropper.css" rel="stylesheet">
 
-    <style>
+  <style>
     .label {
       cursor: pointer;
     }
@@ -29,23 +29,19 @@
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
     <h1>Upload cropped image to server</h1>
-    <p>Please note that the image will be uploaded to a <a href="https://jsonplaceholder.typicode.com/">third-party fake API server</a>, which means that the upload process will sometimes fail.</p>
     <form action="recebe.php" method="post" enctype="multipart/form-data" id="formIMG">
-    <label class="label" data-toggle="tooltip" title="Change your avatar">
-      
-      <img class="img-fluid" style="max-width: 150px;" id="avatar" src="https://avatars0.githubusercontent.com/u/3456749?s=160"  alt="avatar">
-      <input type="hidden" value="" name="img64" id="img64">
-      
-     
-      <input type="file" class="" id="input" name="image" accept="image/*">
-    </label>
-    <button class="btn btn-success" type="submit">Enviar</button>
+      <label class="label" data-toggle="tooltip" title="Change your avatar">
+        <img class="img-fluid" style="max-width: 150px;" id="avatar" src="https://www.geradoresuteis.com.br/img/sem-imagem.png" alt="avatar">
+        <input type="hidden" value="" name="img64" id="img64">
+        <input type="file" class="" id="input" name="image" accept="image/*">
+      </label>
+      <button class="btn btn-success" type="submit">Enviar</button>
     </form>
 
 
-    
+
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -67,16 +63,16 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 
-    <script src="https://unpkg.com/jquery@3/dist/jquery.min.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="node_modules/cropperjs/dist/cropper.js"></script>
+  <script src="https://unpkg.com/jquery@3/dist/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="node_modules/cropperjs/dist/cropper.js"></script>
 
 
-    <script>
-    window.addEventListener('DOMContentLoaded', function () {
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
       var avatar = document.getElementById('avatar');
       var image = document.getElementById('image');
       var input = document.getElementById('input');
@@ -88,9 +84,9 @@
 
       $('[data-toggle="tooltip"]').tooltip();
 
-      input.addEventListener('change', function (e) {
+      input.addEventListener('change', function(e) {
         var files = e.target.files;
-        var done = function (url) {
+        var done = function(url) {
           input.value = '';
           image.src = url;
           $modal.modal('show');
@@ -106,7 +102,7 @@
             done(URL.createObjectURL(file));
           } else if (FileReader) {
             reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
               done(reader.result);
             };
             reader.readAsDataURL(file);
@@ -114,17 +110,17 @@
         }
       });
 
-      $modal.on('shown.bs.modal', function () {
+      $modal.on('shown.bs.modal', function() {
         cropper = new Cropper(image, {
           aspectRatio: 1,
           viewMode: 0,
         });
-      }).on('hidden.bs.modal', function () {
+      }).on('hidden.bs.modal', function() {
         cropper.destroy();
         cropper = null;
       });
 
-      document.getElementById('crop').addEventListener('click', function () {
+      document.getElementById('crop').addEventListener('click', function() {
         var initialAvatarURL;
         var canvas;
 
@@ -136,8 +132,7 @@
           avatar.src = canvas.toDataURL();
           $("#img64").val(avatar.src);
 
-          canvas.toBlob(function (blob) {
-        });
+          canvas.toBlob(function(blob) {});
         }
       });
     });
