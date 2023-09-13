@@ -12,10 +12,8 @@
 	$data = base64_decode($data);
 	
 
-	while (true) {
-		$origem = uniqid(rand(), true);
-		if (!file_exists(sys_get_temp_dir() . $origem)) break;
-	}
+	
+	$origem = uniqid(rand(), true);
 	$destino = $origem.".jpg";
 
 	file_put_contents($origem, $data);
@@ -24,8 +22,7 @@
 		$image = imagecreatefrompng($originalFile);
 		$bg = imagecreatetruecolor(imagesx($image), imagesy($image));
 		imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
-		//imagealphablending($bg, TRUE)
-
+		
 		imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
 		imagedestroy($image);		
 
